@@ -33,7 +33,7 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = cv1.0.0
-DISTDIR = /home/dwk/qt/qtcv/build-cv-Desktop_Qt_5_5_1_GCC_64bit-Release/.tmp/cv1.0.0
+DISTDIR = /home/dwk/qt/RobotQtUpper/build-cv-Desktop_Qt_5_5_1_GCC_64bit-Release/.tmp/cv1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-O1 -Wl,-rpath,/home/dwk/Qt5.5.1/5.5/gcc_64 -Wl,-rpath,/home/dwk/Qt5.5.1/5.5/gcc_64/lib
 LIBS          = $(SUBLIBS) /usr/local/lib/libopencv_*.so -L/home/dwk/Qt5.5.1/5.5/gcc_64/lib -lQt5Widgets -L/usr/lib64 -lQt5Gui -lQt5Core -lGL -lpthread 
@@ -706,7 +706,7 @@ moc_mainwindow.cpp: ../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QMainWindow \
 		../../../Qt5.5.1/5.5/gcc_64/include/QtCore/qtimer.h \
 		../../../Qt5.5.1/5.5/gcc_64/include/QtCore/qbasictimer.h \
 		../cv/mainwindow.h
-	/home/dwk/Qt5.5.1/5.5/gcc_64/bin/moc $(DEFINES) -I/home/dwk/Qt5.5.1/5.5/gcc_64/mkspecs/linux-g++ -I/home/dwk/qt/qtcv/cv -I/usr/local/include -I/usr/local/include/opencv -I/usr/local/include/opencv2 -I/home/dwk/Qt5.5.1/5.5/gcc_64/include -I/home/dwk/Qt5.5.1/5.5/gcc_64/include/QtWidgets -I/home/dwk/Qt5.5.1/5.5/gcc_64/include/QtGui -I/home/dwk/Qt5.5.1/5.5/gcc_64/include/QtCore -I. ../cv/mainwindow.h -o moc_mainwindow.cpp
+	/home/dwk/Qt5.5.1/5.5/gcc_64/bin/moc $(DEFINES) -I/home/dwk/Qt5.5.1/5.5/gcc_64/mkspecs/linux-g++ -I/home/dwk/qt/RobotQtUpper/cv -I/usr/local/include -I/usr/local/include/opencv -I/usr/local/include/opencv2 -I/home/dwk/Qt5.5.1/5.5/gcc_64/include -I/home/dwk/Qt5.5.1/5.5/gcc_64/include/QtWidgets -I/home/dwk/Qt5.5.1/5.5/gcc_64/include/QtGui -I/home/dwk/Qt5.5.1/5.5/gcc_64/include/QtCore -I. ../cv/mainwindow.h -o moc_mainwindow.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1063,7 +1063,51 @@ mainwindow.o: ../cv/mainwindow.cpp ../cv/mainwindow.h \
 		../../../Qt5.5.1/5.5/gcc_64/include/QtCore/QTimer \
 		../../../Qt5.5.1/5.5/gcc_64/include/QtCore/qtimer.h \
 		../../../Qt5.5.1/5.5/gcc_64/include/QtCore/qbasictimer.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtCore/QVariant \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QAction \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qaction.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qactiongroup.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QApplication \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qapplication.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtCore/qeventloop.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtGui/qguiapplication.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtGui/qinputmethod.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QButtonGroup \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QHeaderView \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qheaderview.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtGui/qvalidator.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtCore/qregularexpression.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qslider.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qstyle.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QLabel \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QLineEdit \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qlineedit.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtGui/qtextcursor.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtGui/qtextformat.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtGui/qpen.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtGui/qtextoption.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QPushButton \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QStatusBar \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qstatusbar.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QToolBar \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/qtoolbar.h \
+		../../../Qt5.5.1/5.5/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../cv/mainwindow.cpp
 
 convey.o: ../cv/convey.cpp ../cv/convey.h \

@@ -6,9 +6,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ack = 'o';
+    q_flg = false;
     start_flg = false;
     connect_flg = false;
+    label = new QLabel(this);
     timer = new QTimer(this);
+    image.create(Size(640,480),CV_8UC3);
     connect(timer, SIGNAL(timeout()), this, SLOT(slot_timer()));
 }
 
@@ -23,7 +27,7 @@ void MainWindow::on_but_start_clicked()
     {
             if(!start_flg)
             {
-                    timer->start(50);
+                    timer->start(33);
                     ui->but_start->setText("pause");
                     start_flg = true;
                     ui->txt_lab1->setText("started!");
@@ -51,14 +55,12 @@ void MainWindow::on_but_con_clicked()
 {
     if(!connect_flg)
     {
-            ack = 'o';
-            image.create(Size(640,480),CV_8UC3);
             QString str = ui->lineEdit_ip->text();
             if(str.length())
             {
                     QByteArray ba = str.toLatin1();
-                    char *mm = ba.data();
-                    if(conv.clientinit(clfd,mm) == -1){
+                    char *ip = ba.data();
+                    if(conv.clientinit(clfd,ip) == -1){
                     ui->txt_lab1->setText("please strat the server!");
                     return;
                     }
@@ -67,22 +69,53 @@ void MainWindow::on_but_con_clicked()
                     return;
                     }
             connect_flg = true;
+            ui->but_con->setText("disconct");
             ui->txt_lab1->setText("connect!");
-    }else ui->txt_lab1->setText("opened already");
+    }else
+    {
+        if(!start_flg)
+        {
+            ack = 'q';
+            send(clfd,&ack,1,0);
+            connect_flg = false;
+            ack = 'o';
+            ui->but_con->setText("connect");
+            ui->txt_lab1->setText("disconnected!");
+        }else{
+            q_flg = true;
+            start_flg = false;
+            ui->but_start->setText("start");
+            ui->but_con->setText("connect");
+            ui->txt_lab1->setText("disconnected!");
+        }
+    }
 }
 
 void MainWindow::slot_timer()
 {
     if(connect_flg)
     {
+        if(!q_flg){
+        send(clfd,&ack,1,0);
         conv.recvimg(clfd,image);
+        conv.recvdata(clfd,data);
+        ui->lab_dir->setText(QString::number(data[0]));
+        ui->lab_width->setText(QString::number(data[1]));
+        ui->lab_height->setText(QString::number(data[2]));
         cv::cvtColor(image, image, CV_RGB2RGBA);//图像在QT显示前，必须转化成QImage格式，将RGBA格式转化成RGB
         img = QImage((const unsigned char*)(image.data), image.cols, image.rows, QImage::Format_RGB32);
-        QLabel *label = new QLabel(this);
         label->move(0,0);
         label->setPixmap(QPixmap::fromImage(img));
         label->resize(label->pixmap()->size());
         label->show();
-        send(clfd,&ack,1,0);
+        }else{
+            ack = 'q';
+            send(clfd,&ack,1,0);
+            ack = 'o';
+            q_flg = false;
+            connect_flg = false;
+            ::close(clfd);
+            timer->stop();
+        }
     }else ui->txt_lab1->setText("please connect first");
 }

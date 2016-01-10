@@ -36,8 +36,10 @@ private:
     QTimer *timer;    //定时器
     char ack;
     int clfd;
+    vector<int> data;
     Convey conv;
-    bool start_flg,connect_flg;
+    bool start_flg,connect_flg,q_flg;
+    QLabel *label;
     cv::Mat image;
     QImage img;
     Ui::MainWindow *ui;

@@ -124,3 +124,16 @@ int Convey::recvall(int sockfd,void *ptr,uint len)
     return 1;
 }
 
+int Convey::senddata(int sockfd,vector<int> data,int len)
+{
+    send(sockfd,&len,4,0);
+    return send(sockfd,&data[0],4*len,0);
+}
+
+int Convey::recvdata(int sockfd,vector<int> &data)
+{
+    int len;
+    recv(sockfd,&len,4,0);
+    data.resize(len);
+    return recv(sockfd,&data[0],4*len,0);
+}

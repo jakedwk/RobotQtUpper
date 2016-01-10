@@ -1,5 +1,3 @@
-#ifndef CONVEY_H
-#define CONVEY_H
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/opencv.hpp"
@@ -20,6 +18,7 @@
 #include <errno.h>
 #include <unistd.h>
 #include <arpa/inet.h>
+
 
 #define SERVPORT 5788
 #define BACKLOG 10
@@ -52,7 +51,9 @@ class  Convey
         void sendimg(int sockfd,InputArray frame);
         void recvimg(int sockfd,OutputArray frame);
         int recvall(int sockfd,void *ptr,uint len);
+        int senddata(int sockfd,vector<int> data,int len);
+        int recvdata(int sockfd,vector<int> &data);
         int clientinit(int &sockfd,const char* address = ADDRESS,int servport = SERVPORT);
 };
 
-#endif
+
