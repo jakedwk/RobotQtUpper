@@ -136,7 +136,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>680</x>
@@ -145,7 +145,7 @@
       <height>241</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QVBoxLayout" name="verticalLayout1">
      <item>
       <widget class="QLabel" name="label">
        <property name="text">
@@ -189,6 +189,19 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>220</y>
+      <width>3</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
    </widget>
   </widget>
   <widget class="QToolBar" name="mainToolBar">

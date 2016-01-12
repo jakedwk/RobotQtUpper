@@ -133,7 +133,7 @@ int Convey::senddata(int sockfd,vector<int> data,int len)
 int Convey::recvdata(int sockfd,vector<int> &data)
 {
     int len;
-    recv(sockfd,&len,4,0);
+    recvall(sockfd,&len,4);
     data.resize(len);
-    return recv(sockfd,&data[0],4*len,0);
+    return recvall(sockfd,&data[0],4*len);
 }

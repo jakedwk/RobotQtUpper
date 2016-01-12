@@ -33,15 +33,15 @@ private slots:
     void on_but_con_clicked();
 
 private:
-    QTimer *timer;    //定时器
     char ack;
     int clfd;
     vector<int> data;
-    Convey conv;
-    bool start_flg,connect_flg,q_flg;
+    bool start_flg,connect_flg,q_flg,s_flg;
+    Convey *conv;
+    QTimer *timer;    //定时器
     QLabel *label;
-    cv::Mat image;
-    QImage img;
+    cv::Mat *image,*mframe;
+    QImage *img;
     Ui::MainWindow *ui;
 };
 

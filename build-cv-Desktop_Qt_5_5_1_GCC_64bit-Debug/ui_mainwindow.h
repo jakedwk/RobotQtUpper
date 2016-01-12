@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -42,7 +43,7 @@ public:
     QLabel *lab_x;
     QLabel *lab_y;
     QLabel *lab_z;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QLabel *label_2;
@@ -50,6 +51,7 @@ public:
     QLabel *label_4;
     QLabel *label_5;
     QLabel *label_6;
+    QFrame *line;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -114,44 +116,49 @@ public:
 
         verticalLayout_2->addWidget(lab_z);
 
-        widget = new QWidget(centralWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(680, 70, 51, 241));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget1 = new QWidget(centralWidget);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(680, 70, 51, 241));
+        verticalLayout = new QVBoxLayout(layoutWidget1);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget1);
         label->setObjectName(QStringLiteral("label"));
 
         verticalLayout->addWidget(label);
 
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(layoutWidget1);
         label_2->setObjectName(QStringLiteral("label_2"));
 
         verticalLayout->addWidget(label_2);
 
-        label_3 = new QLabel(widget);
+        label_3 = new QLabel(layoutWidget1);
         label_3->setObjectName(QStringLiteral("label_3"));
 
         verticalLayout->addWidget(label_3);
 
-        label_4 = new QLabel(widget);
+        label_4 = new QLabel(layoutWidget1);
         label_4->setObjectName(QStringLiteral("label_4"));
 
         verticalLayout->addWidget(label_4);
 
-        label_5 = new QLabel(widget);
+        label_5 = new QLabel(layoutWidget1);
         label_5->setObjectName(QStringLiteral("label_5"));
 
         verticalLayout->addWidget(label_5);
 
-        label_6 = new QLabel(widget);
+        label_6 = new QLabel(layoutWidget1);
         label_6->setObjectName(QStringLiteral("label_6"));
 
         verticalLayout->addWidget(label_6);
 
+        line = new QFrame(centralWidget);
+        line->setObjectName(QStringLiteral("line"));
+        line->setGeometry(QRect(590, 220, 3, 61));
+        line->setFrameShape(QFrame::VLine);
+        line->setFrameShadow(QFrame::Sunken);
         MainWindow->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
